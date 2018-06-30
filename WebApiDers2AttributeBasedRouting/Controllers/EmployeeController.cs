@@ -48,7 +48,7 @@ namespace WebApiDers2AttributeBasedRouting.Controllers
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
             //response.Headers.Location = new Uri("/api//employee/" + emp.Id.ToString());
             //response.Headers.Location = new Uri(Request.RequestUri+"/" + emp.Id.ToString());//üstteki ile aynı işi yapıyor.
-            response.Headers.Location = new Uri(Url.Link("GetById",new { id = emp.Id }));
+            response.Headers.Location = new Uri(Url.Link("GetById",new { id = emp.Id }));//Burada ise route name verilen get metoduna yolladık.
             return response;
         }
         [Route("{id}/tasks")]
@@ -66,7 +66,7 @@ namespace WebApiDers2AttributeBasedRouting.Controllers
                     return null;
             }
         }
-        [Route("~/api/tasks")]//routeprefix ezmek için tinda işareti kullanıyoruz.
+        [Route("~/api/tasks")]//routeprefix'i ezmek için tinda işareti kullanıyoruz.
         public IEnumerable<string> GetTasks()
         {
             return new List<string> { "Task 1-1", "Task 1-2", "Task 1-3",
